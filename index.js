@@ -12,6 +12,11 @@ app.get("/sightings", async (req, res) => {
   res.json(sightings);
 });
 
+app.get("/sightings/:sightingsIndex", async (req, res) => {
+  const sightings = await getSightings();
+  res.json(sightings[req.params.sightingsIndex - 1]);
+});
+
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
 });
